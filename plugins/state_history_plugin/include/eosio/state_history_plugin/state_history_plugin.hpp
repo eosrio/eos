@@ -106,6 +106,7 @@ struct get_blocks_result_v0 {
    block_position               head;
    block_position               last_irreversible;
    fc::optional<block_position> this_block;
+   fc::optional<chain::block_timestamp_type> this_time;
    fc::optional<block_position> prev_block;
    fc::optional<bytes>          block;
    fc::optional<bytes>          traces;

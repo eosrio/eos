@@ -280,6 +280,7 @@ struct state_history_plugin_impl : std::enable_shared_from_this<state_history_pl
             return;
          auto&                chain = plugin->chain_plug->chain();
          get_blocks_result_v0 result;
+         chain::signed_block_ptr p;
          result.head              = {chain.head_block_num(), chain.head_block_id()};
          result.last_irreversible = {chain.last_irreversible_block_num(), chain.last_irreversible_block_id()};
          uint32_t current =
@@ -289,6 +290,8 @@ struct state_history_plugin_impl : std::enable_shared_from_this<state_history_pl
             auto block_id = plugin->get_block_id(current_request->start_block_num);
             if (block_id) {
                result.this_block  = block_position{current_request->start_block_num, *block_id};
+               p = plugin->chain_plug->chain().fetch_block_by_number(current_request->start_block_num);
+               result.this_time = p->timestamp;
                auto prev_block_id = plugin->get_block_id(current_request->start_block_num - 1);
                if (prev_block_id)
                   result.prev_block = block_position{current_request->start_block_num - 1, *prev_block_id};

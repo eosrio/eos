@@ -182,6 +182,7 @@ operator<<(datastream<ST>&                                                      
    fc::raw::pack(ds, as_type<uint64_t>(obj.context.table.to_uint64_t()));
    fc::raw::pack(ds, as_type<uint64_t>(obj.obj.primary_key));
    fc::raw::pack(ds, as_type<uint64_t>(obj.obj.payer.to_uint64_t()));
+   fc::raw::pack(ds, as_type<uint64_t>(obj.obj.global_sequence));
    fc::raw::pack(ds, as_type<eosio::chain::shared_string>(obj.obj.value));
    return ds;
 }

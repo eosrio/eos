@@ -42,6 +42,7 @@ extern const char* const state_history_plugin_abi = R"({
                 { "name": "head", "type": "block_position" },
                 { "name": "last_irreversible", "type": "block_position" },
                 { "name": "this_block", "type": "block_position?" },
+                { "name": "this_time", "type": "block_timestamp_type?" },
                 { "name": "prev_block", "type": "block_position?" },
                 { "name": "block", "type": "bytes?" },
                 { "name": "traces", "type": "bytes?" },

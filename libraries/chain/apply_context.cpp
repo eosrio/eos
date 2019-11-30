@@ -667,6 +667,8 @@ int apply_context::db_store_i64( name code, name scope, name table, const accoun
       o.primary_key = id;
       o.value.assign( buffer, buffer_size );
       o.payer       = payer;
+      const auto& p = control.get_dynamic_global_properties();
+      o.global_sequence = p.global_action_sequence;
    });
 
    db.modify( tab, [&]( auto& t ) {

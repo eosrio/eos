@@ -58,6 +58,7 @@ namespace eosio { namespace chain {
       table_id              t_id; //< t_id should not be changed within a chainbase modifier lambda
       uint64_t              primary_key; //< primary_key should not be changed within a chainbase modifier lambda
       account_name          payer;
+      uint64_t              global_sequence;
       shared_blob           value;
    };
 
